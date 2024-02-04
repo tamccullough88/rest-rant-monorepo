@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 function PlaceIndex(data) {
 
 	const history = useHistory()
-	
+
 	const [places, setPlaces] = useState([])
 
 	useEffect(() => {
