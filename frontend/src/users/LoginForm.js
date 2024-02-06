@@ -20,6 +20,7 @@ function LoginForm() {
     async function handleSubmit(e) {
         const response = await fetch(`http://localhost:5000/authentication/`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
