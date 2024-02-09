@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { useHistory } from "react-router";
-import { Redirect } from 'react-router-dom'
+
 import { CurrentUser } from './contexts/CurrentUser';
 
 
@@ -74,11 +74,6 @@ function Navigation() {
                 <li>
                     <a href="" onClick={() => history.push("/places")}>
                         Places
-                    </a>
-                </li>
-                <li>
-                    <a href="" onClick={() => history.push("/places/new")}>
-                        Add Place
                     </a>
                 </li>
                 {addPlaceButton}
