@@ -1,12 +1,20 @@
 import { useState, useEffect, useContext } from 'react'
 import { useHistory } from "react-router";
+import { Redirect } from 'react-router-dom'
 import { CurrentUser } from './contexts/CurrentUser';
+
+
 
 function Navigation() {
 
     const history = useHistory()
 
     const { currentUser } = useContext(CurrentUser)
+
+
+
+
+
 
     let loginActions = (
         <>
@@ -23,10 +31,34 @@ function Navigation() {
         </>
     )
 
+    const handleLogout = async () => {
+        await localStorage.clear();
+        window.location.reload()
+            ;
+    }
+
     if (currentUser) {
         loginActions = (
-            <li style={{ float: 'right' }}>
-                Logged in as {currentUser.firstName} {currentUser.lastName}
+            <div style={{ float: 'right' }}>
+                <li>
+                    {currentUser.firstName}
+                </li>
+                <button onClick={handleLogout}>
+                    Logout
+                </button>
+            </div>
+
+        )
+    }
+
+    let addPlaceButton = null
+
+    if (currentUser?.role === 'admin') {
+        addPlaceButton = (
+            <li>
+                <a href="" onClick={() => history.push("/places/new")}>
+                    Add Place
+                </a>
             </li>
         )
     }
@@ -49,6 +81,7 @@ function Navigation() {
                         Add Place
                     </a>
                 </li>
+                {addPlaceButton}
                 {loginActions}
             </ul>
         </nav>
