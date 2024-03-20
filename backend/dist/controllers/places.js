@@ -10,8 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
-const db = require("../models");
-const { Place, Comment, User } = db;
+const { Place, Comment, User } = require("../models");
 router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     if (((_a = req.currentUser) === null || _a === void 0 ? void 0 : _a.role) !== 'admin') {
